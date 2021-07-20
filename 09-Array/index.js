@@ -120,12 +120,41 @@ const goals = [8, 1, 1, 3, 2, -1, 5]
 const sortGoals = []
 
 //7.1
+/*
+const numberOfGoals = Math.max(...goals)
+const numberGame = goals.indexOf(numberOfGoals)
+
+alert(`Самый результативный матч был под номером ${numberGame}. В нем было забито ${numberOfGoals} гол(ов).`)
+*/
 
 //7.2
 
+const numberOfGoals = Math.min(...goals)
+//const numberGame = goals.indexOf(numberOfGoals)
+
+const newArrGoals = goals.filter( (goals, index, array) => {
+	return goals > -1
+} )
+
+console.log(Math.min(...newArrGoals))
+
 //7.3
+/*
+const totalGoals = newArrGoals.reduce((acc, goal, i, arr) => acc + goal)
+console.log(`Общее количество голов за сезон равно ${totalGoals}`);
+*/
 
 //7.4
+/*
+const loseGame = goals.some((goal) => goal === -1)
+
+if ( loseGame ) {
+	console.log('Были автоматические поражения: да')
+} else {
+	console.log('Были автоматические поражения: нет')
+	
+}
+*/
 
 //7.5
 /*

@@ -121,23 +121,22 @@ const sortGoals = []
 
 //7.1
 /*
-const numberOfGoals = Math.max(...goals)
-const numberGame = goals.indexOf(numberOfGoals)
+const maxGoals = goals.reduce((acc, goal, index) => {
+	return goal > acc ? goal : acc
+}, 0)
 
-alert(`Самый результативный матч был под номером ${numberGame}. В нем было забито ${numberOfGoals} гол(ов).`)
+const numberGame = goals.indexOf(maxGoals)
+
+console.log(`Самый результативный матч был под номером ${numberGame}. В нем было забито ${maxGoals} гол(ов).`)
 */
 
 //7.2
+const newArr = goals.sort()
+const arrMinGoals = newArr.forEach( (item) => { return item } )
+console.log(arrMinGoals)
+/*
 
-const numberOfGoals = Math.min(...goals)
-//const numberGame = goals.indexOf(numberOfGoals)
-
-const newArrGoals = goals.filter( (goals, index, array) => {
-	return goals > -1
-} )
-
-console.log(Math.min(...newArrGoals))
-
+*/
 //7.3
 /*
 const totalGoals = newArrGoals.reduce((acc, goal, i, arr) => acc + goal)

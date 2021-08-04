@@ -131,12 +131,26 @@ console.log(`Самый результативный матч был под но
 */
 
 //7.2
-const newArr = goals.sort()
-const arrMinGoals = newArr.forEach( (item) => { return item } )
-console.log(arrMinGoals)
 /*
+const minGoalsNum = goals.reduce( (acc, cur) => {
+	if ( cur > -1 ) {
+		return acc < cur ? acc : cur
+	} else {
+		return acc
+	}
+}, maxGoals )
 
+const indexesOfMinGoals = []
+
+goals.forEach( (goal, index) => {
+	if ( goal === minGoalsNum ) {
+		indexesOfMinGoals.push(index)
+	}
+} )
+
+console.log(`Самый результативный матч был под номером ${indexesOfMinGoals}. В нем было забито ${minGoalsNum} гол(ов).`)
 */
+
 //7.3
 /*
 const totalGoals = newArrGoals.reduce((acc, goal, i, arr) => acc + goal)
@@ -176,4 +190,34 @@ const stringArr = (arr) => {
 
 sortingArray(goals)
 stringArr(sortGoals)
+*/
+
+//Доп задание 2
+/*
+const newMatrix = []
+
+for ( let i = 1; i <=3; i++ ) {
+	const itemMatrix = []
+	for ( let c = 1; c <= 5; c++ ) {
+		itemMatrix.push(c)
+	}
+	newMatrix.push(itemMatrix)
+}
+console.log(newMatrix)
+*/
+
+//Доп задание 3
+/*
+const matrix = [
+	[ 1, 2, 3 ],
+	[ 4, 5, 6 ],
+	[ 7, 8, 9 ],
+]
+
+const newArrMatrix = []
+
+matrix.forEach( (item, index) => {
+	newArrMatrix.push(...item)
+} )
+console.log(newArrMatrix)
 */

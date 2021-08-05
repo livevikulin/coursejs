@@ -77,13 +77,22 @@ console.log('result', result)
 */
 
 //4
-
+/*
 const getKiller = (suspectInfo, deadPeople) => {
-	const suspect = Object.values(suspectInfo)
-	suspect.forEach((item) => {
-		console.log(item)
-	})
-	console.log(deadPeople)
+	let killerIs = []
+	let humans = Object.entries(suspectInfo)
+	humans.forEach(item => {
+		let counter = 0
+		deadPeople.forEach(element => {
+			if (item[1].indexOf(element) != -1) {
+				counter++
+			}
+		})
+		if (counter == deadPeople.length) {
+			killerIs.push(item[0])
+		}
+	});
+	console.log(killerIs.join())
 }
 
 getKiller(
@@ -93,4 +102,56 @@ getKiller(
 		'Peter': ['Lucy', 'Kyle'],
 	},
 	['Lucas', 'Bill']
- )
+)
+
+ getKiller(
+	{
+		'Brad': [],
+		'Megan': ['Ben', 'Kevin'],
+		'Finn': [],
+	},
+	['Ben']
+)
+*/
+
+//5
+/*
+const todaysWinner = {
+	prize: '10 000$'
+}
+
+const winnerApplicants = {
+	'001': {
+		name: 'Максим',
+		age: 25
+	},
+	'201': {
+		name: 'Светлана',
+		age: 20
+	},
+	'304': {
+		name: 'Екатерина',
+		age: 35
+	}
+}
+
+const getRandomNumberInRange = (min, max) => {
+	return Math.floor(Math.random() * (max - min)) + min
+}
+
+const getWinner = (applicants, winnerObject) => {
+	const newObj = Object.keys(applicants)
+	const randomKey = applicants[newObj[getRandomNumberInRange(0, newObj.length)]]
+	const winner = {
+		...winnerObject,
+		...randomKey
+	}
+	return winner
+}
+
+const resultWinner = getWinner(winnerApplicants, todaysWinner)
+console.log('resultWinner', resultWinner) // { prize: '10 000$', name: 'Максим', age: 25 }
+*/
+
+//6
+

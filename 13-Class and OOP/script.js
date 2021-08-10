@@ -1,81 +1,5 @@
-// ООП
+//1 ЗАДАНИЕ
 
-// function and class
-
-// function Animal(name) {
-//     this.name = name;
-
-//     this.getName = function() {
-//         return this.name
-//     }
-// }
-
-// class Animal {
-//     constructor(name) {
-//         this.name = name
-//     }
-//     getName() {
-//         return this.name
-//     }
-// }
-
-
-//new
-// const cat = new Animal('кот')
-// const dog = new Animal('собака')
-
-// console.log('cat', cat)
-// console.log('cat', cat.name)
-// console.log('cat', cat.getName())
-
-//console.log(dog)
-
-// 1. Наследование
-// class Plane {
-//     constructor(type, numberOfPassengers) {
-//         this.type = type;
-//         this.numberOfPassengers = numberOfPassengers;
-//     }
-//     startFlight() {
-//         console.log('Полетели');
-//     }
-// }
-
-// class MilitaryPlane extends Plane {
-//     constructor(type) {
-//         super(type, 0)
-//         this.numberOfGuns = 0;
-//     }
-//     setNumberOfGuns(numberOfGuns) {
-//         this.numberOfGuns = numberOfGuns
-//     }
-//     shoot() {
-//         console.log('Стреляем!');
-//     }
-// }
-
-// const plane = new Plane('Пассажирский', 100)
-// console.log(plane)
-// plane.startFlight()
-
-// const militaryPlane = new MilitaryPlane('Military')
-// console.log(militaryPlane)
-// militaryPlane.startFlight()
-// militaryPlane.setNumberOfGuns(4)
-// militaryPlane.shoot()
-// console.log(militaryPlane)
-// console.log(militaryPlane instanceof MilitaryPlane)
-
-// 2. Инкапсуляция
-
-
-// 3. Полиморфизм
-
-
-// 4. Абстракция
-
-
-//1
 /*
 // function Student(name, age) {
 //     this.name = name;
@@ -117,8 +41,9 @@ class Student {
  console.log(student)
  */
 
- //2
+//2 ЗАДАНИЕ
 
+/*
  class Person {
      constructor(name, age) {
         this.name = name;
@@ -138,3 +63,203 @@ class Student {
  person1.compareAge(person2); // Максим младше, чем Светлана
  person2.compareAge(person3); // Светлана старше, чем Ирина
  person3.compareAge(person1); // Ирина младше, чем Максим
+ */
+
+//3 ЗАДАНИЕ
+
+/*
+ class CarService {
+	static DefaultWorkingHours = {
+		from: '9:00',
+		till: '20:00',
+	 }
+
+	 constructor(name, workingHours) {
+		this.name = name;
+		this.workingHours = workingHours || CarService.DefaultWorkingHours;
+	 }
+
+	repairCar(carName) {
+		if ( carName ) {
+			const timeFrom = Number(CarService.DefaultWorkingHours.from.split(':')[0])
+			const timeTill = Number(CarService.DefaultWorkingHours.till.split(':')[0])
+			const thisTime = new Date().getHours()
+
+			thisTime >= timeFrom && thisTime <= timeTill 
+				? console.log(`Сейчас отремонтируем вашу машину ${carName}! Ожидайте, пожалуйста”`)
+				: console.log(`К сожалению, мы сейчас закрыты. Приходите завтра`)
+		} else {
+			console.error('Вам необходимо указать название машины, чтобы ее отремонтировать!');
+			return
+		}
+	 }
+ }
+ 
+ const carService = new CarService('RepairCarNow', { from: '8:00', till: '20:00' })
+ carService.repairCar('BMW')
+ */
+
+//4 ЗАДАНИЕ
+
+/*
+ class Dictionary {
+	constructor(name) {
+		this.name = name;
+		this.words = {};
+	}
+
+	add(word, description) {
+		this.words[word] = description
+	}
+
+	remove(word) {
+		delete this.words[word]
+	}
+
+	get(word) {
+		this.words[word]
+			? console.log(`${this.words[word]}`)
+			: console.log(`Такого слова нет в словаре!`)
+		
+	}
+
+	showAllWords() {
+		const word = this.words.word
+		const description = this.words.description
+		return console.log(`${word} - ${description}`)
+	}
+ }
+
+ const dictionary = new Dictionary('Толковый словарь')
+
+ dictionary.add('JavaScript', 'популярный язык программирования')
+ dictionary.add('Веб-разработчик', 'Человек, который создает новые сервисы и сайты или поддерживает и дополняет существующие')
+ dictionary.remove('JavaScript')
+ dictionary.get('Веб-разработчик')
+*/
+
+//5 ЗАДАНИЕ
+
+/*
+class Dictionary {
+	constructor(name) {
+		this.name = name;
+		this.words = {};
+	}
+
+	add(word, description) {
+		this.words[word] = description
+	}
+
+	remove(word) {
+		delete this.words[word]
+	}
+
+	get(word) {
+		this.words[word]
+			? console.log(`${this.words[word]}`)
+			: console.log(`Такого слова нет в словаре!`)
+	}
+
+	showAllWords() {
+		const word = this.words.word
+		const description = this.words.description
+		return console.log(`${word} - ${description}`)
+	}
+}
+
+class HardWordsDictionary extends Dictionary {
+	constructor(name) {
+		super(name)
+	}
+
+	add(word, description) {
+		this.words[word] = description
+		this.words.isDifficult = true
+	}
+}
+
+const hardWordsDictionary = new HardWordsDictionary('Сложные слова')
+
+hardWordsDictionary.add('дилетант', 'Тот, кто занимается наукой или искусством без специальной подготовки, обладая только поверхностными знаниями.')
+hardWordsDictionary.add('неологизм', 'Новое слово или выражение, а также новое значение старого слова.')
+hardWordsDictionary.add('квант', 'Неделимая часть какой-либо величины в физике.')
+console.log(hardWordsDictionary)
+*/
+
+//6 ЗАДАНИЕ
+
+class Dictionary {
+	#name
+	#words
+
+	constructor(name) {
+		this.#name = name
+		this.#words = {}
+	}
+
+	get mainName() {
+		return this.#name
+	}
+
+	get allWords() {
+		return this.#words
+	}
+
+	set setMainName(name) {
+		this.#name = name
+	}
+
+	addNewWord(word, description) {
+		this.add(word, description)
+	}
+
+	add(word, description) {
+		this.#words[word] = description
+	}
+
+	remove(word) {
+		delete this.#words[word]
+	}
+
+	get(word) {
+		this.#words[word]
+			? console.log(`${this.#words[word]}`)
+			: console.log(`Такого слова нет в словаре!`)
+	}
+
+	showAllWords() {
+		const word = this.#words.word
+		const description = this.#words.description
+		console.log(this.#words);
+		return console.log(`${word} - ${description}`)
+	}
+}
+
+class HardWordsDictionary extends Dictionary {
+	constructor(name) {
+		super(name)
+	}
+
+	add(word, description) {
+		this.words[word] = description
+		this.words.isDifficult = true
+	}
+}
+
+const hardWordsDictionary = new HardWordsDictionary('Сложные слова')
+
+hardWordsDictionary.add('дилетант', 'Тот, кто занимается наукой или искусством без специальной подготовки, обладая только поверхностными знаниями.')
+hardWordsDictionary.add('неологизм', 'Новое слово или выражение, а также новое значение старого слова.')
+hardWordsDictionary.add('квант', 'Неделимая часть какой-либо величины в физике.')
+
+hardWordsDictionary.remove('неологизм')
+hardWordsDictionary.showAllWords()
+ 
+console.log(hardWordsDictionary.mainName) // Сложные слова
+hardWordsDictionary.setMainName = 'Новый Словарь'
+console.log(hardWordsDictionary)
+console.log(hardWordsDictionary.mainName) // Новый Словарь
+console.log(hardWordsDictionary.allWords) // выводит объект в котором есть слова дилетант и квант
+
+

@@ -199,7 +199,7 @@ console.log(hardWordsDictionary.showAllWords())
 */
 
 //6 ЗАДАНИЕ
-
+/*
 class Dictionary {
 	#name
 	#words
@@ -273,10 +273,74 @@ hardWordsDictionary.add('квант', 'Неделимая часть какой-
 hardWordsDictionary.remove('неологизм')
 hardWordsDictionary.showAllWords()
  
-// console.log(hardWordsDictionary.mainName) // Сложные слова
-// hardWordsDictionary.setMainName = 'Новый Словарь'
-// console.log(hardWordsDictionary)
-// console.log(hardWordsDictionary.mainName) // Новый Словарь
+console.log(hardWordsDictionary.mainName) // Сложные слова
+hardWordsDictionary.setMainName = 'Новый Словарь'
+console.log(hardWordsDictionary)
+console.log(hardWordsDictionary.mainName) // Новый Словарь
 console.log(hardWordsDictionary.allWords) // выводит объект в котором есть слова дилетант и квант
+*/
+
+//7 ЗАДАНИЕ
+/*
+class Developer {
+	constructor( fullName, age, position ) {
+		this.fullName = fullName;
+		this.age = age;
+		this.position = position;
+		this.technologies = [];
+	}
+
+	code() {}
+
+	learnNewTechnology(technology) {
+		this.technologies = [...technology]
+	}
+}
+
+class JuniorDeveloper extends Developer {
+	constructor(fullName, age, position = 'Junior') {
+		super(fullName, age, position)
+	}
+
+	code() {
+		console.log(`${this.position} разработчик пишет код...`)
+	}
+}
+
+class MiddleDeveloper extends Developer {
+	constructor(fullName, age, position = 'Middle') {
+		super(fullName, age, position)
+	}
+
+	code() {
+		console.log(`${this.position} разработчик пишет код...`)
+	}
+}
+
+class SeniorDeveloper extends Developer {
+	constructor(fullName, age, position = 'Senior') {
+		super(fullName, age, position)
+	}
+
+	code() {
+		console.log(`${this.position} разработчик пишет код...`)
+	}
+}
+
+const juniorDeveloper = new JuniorDeveloper('Анастасия', 20)
+const middleDeveloper = new MiddleDeveloper('Игорь', 25)
+const seniorDeveloper = new SeniorDeveloper('Максим', 30)
+
+juniorDeveloper.code(); // Junior разработчик пишет код...
+middleDeveloper.code(); // Middle разработчик пишет код...
+seniorDeveloper.code(); // Senior разработчик пишет код...
+console.log(juniorDeveloper.fullName, juniorDeveloper.age, juniorDeveloper.position); // 'Анастасия', 20, 'Junior'
+console.log(middleDeveloper.fullName, middleDeveloper.age, middleDeveloper.position); // 'Игорь', 25, 'Middle'
+console.log(seniorDeveloper.fullName, seniorDeveloper.age, seniorDeveloper.position); // 'Максим', 30, 'Senior'
+//juniorDeveloper.learnNewTechnology(['HTML', 'CSS', 'JavaScript'])
+////middleDeveloper.learnNewTechnology(['HTML', 'CSS', 'JavaScript', 'React'])
+//seniorDeveloper.learnNewTechnology(['HTML', 'CSS', 'JavaScript', 'React', 'NodeJS'])
+*/
+
 
 

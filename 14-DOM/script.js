@@ -34,7 +34,7 @@ body.innerHTML = form
 */
 
 //2 ЗАДАНИЕ
-
+/*
 const tasks = [
 	{
 		id: 1,
@@ -53,6 +53,36 @@ const tasks = [
 	}
 ]
 
+const tasksList = document.querySelector('.tasks-list')
+
 tasks.forEach( task => {
-	console.log(task.id)
+	const { id, completed, text } = task
+	const taskItem = document.createElement('div')
+	taskItem.className = 'task-item'
+	taskItem.id = id
+	taskItem.innerHTML = `<div class="task-item__main-container">
+							<div class="task-item__main-content">
+								<form class="checkbox-form">
+									<input class="checkbox-form__checkbox" type="checkbox" id="task-${id}">
+									<label for="task-${id}"></label>
+								</form>
+								<span class="task-item__text">${text}</span>
+							</div>
+							<button class="task-item__delete-button default-button delete-button" data-delete-task-id="${id}">
+								Удалить
+							</button>
+						</div>`
+	tasksList.append(taskItem)
+})
+*/
+
+// 3 ЗАДАНИЕ
+
+const addTaskButton = document.querySelector('.create-task-block');
+
+addTaskButton.addEventListener('submit', (event) => {
+	const { target } = event
+	console.log(target)
+	event.preventDefault();
+	
 })

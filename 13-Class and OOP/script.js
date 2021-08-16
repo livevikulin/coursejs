@@ -242,8 +242,10 @@ class HardWordsDictionary extends Dictionary {
 	}
 
 	add(word, description) {
-		this.words[word] = description
-		this.words.isDifficult = true
+		super.add(word, description)
+		//this.words[word] = description
+		//this.words.isDifficult = true
+		
 	}
 }
 

@@ -109,7 +109,10 @@ class Student {
 	}
 
 	add(word, description) {
-		this.words[word] = description
+		this.words[word] = {
+			word,
+			description,
+		}
 	}
 
 	remove(word) {
@@ -124,9 +127,10 @@ class Student {
 	}
 
 	showAllWords() {
-		const word = this.words.word
-		const description = this.words.description
-		return console.log(`${word} - ${description}`)
+		Object.values(this.words).forEach(element => {
+			const {word, description} = element
+			return console.log(`${word} - ${description}`)
+		})
 	}
  }
 
@@ -136,7 +140,7 @@ class Student {
  dictionary.add('Веб-разработчик', 'Человек, который создает новые сервисы и сайты или поддерживает и дополняет существующие')
  dictionary.remove('JavaScript')
  dictionary.get('Веб-разработчик')
-*/
+ */
 
 //5 ЗАДАНИЕ
 
@@ -148,7 +152,10 @@ class Dictionary {
 	}
 
 	add(word, description) {
-		this.words[word] = description
+		this.words[word] = {
+			word,
+			description,
+		}
 	}
 
 	remove(word) {
@@ -162,9 +169,10 @@ class Dictionary {
 	}
 
 	showAllWords() {
-		const word = this.words.word
-		const description = this.words.description
-		return console.log(`${word} - ${description}`)
+		Object.values(this.words).forEach(element => {
+			const {word, description} = element
+			return console.log(`${word} - ${description}`)
+		})
 	}
 }
 
@@ -174,8 +182,11 @@ class HardWordsDictionary extends Dictionary {
 	}
 
 	add(word, description) {
-		this.words[word] = description
-		this.words.isDifficult = true
+		this.words[word] = {
+			word,
+			description,
+			isDifficult: true
+		}
 	}
 }
 
@@ -184,11 +195,11 @@ const hardWordsDictionary = new HardWordsDictionary('Сложные слова')
 hardWordsDictionary.add('дилетант', 'Тот, кто занимается наукой или искусством без специальной подготовки, обладая только поверхностными знаниями.')
 hardWordsDictionary.add('неологизм', 'Новое слово или выражение, а также новое значение старого слова.')
 hardWordsDictionary.add('квант', 'Неделимая часть какой-либо величины в физике.')
-console.log(hardWordsDictionary)
+console.log(hardWordsDictionary.showAllWords())
 */
 
 //6 ЗАДАНИЕ
-
+/*
 class Dictionary {
 	#name
 	#words
@@ -215,7 +226,10 @@ class Dictionary {
 	}
 
 	add(word, description) {
-		this.#words[word] = description
+		this.#words[word] = {
+			word,
+			description
+		}
 	}
 
 	remove(word) {
@@ -229,10 +243,10 @@ class Dictionary {
 	}
 
 	showAllWords() {
-		const word = this.#words.word
-		const description = this.#words.description
-		console.log(this.#words);
-		return console.log(`${word} - ${description}`)
+		Object.values(this.#words).forEach(element => {
+			const {word, description} = element
+			return console.log(`${word} - ${description}`)
+		})
 	}
 }
 
@@ -242,10 +256,11 @@ class HardWordsDictionary extends Dictionary {
 	}
 
 	add(word, description) {
-		super.add(word, description)
-		//this.words[word] = description
-		//this.words.isDifficult = true
-		
+		this.allWords[word] = {
+			word,
+			description,
+			isDifficult: true
+		}
 	}
 }
 
@@ -263,5 +278,69 @@ hardWordsDictionary.setMainName = 'Новый Словарь'
 console.log(hardWordsDictionary)
 console.log(hardWordsDictionary.mainName) // Новый Словарь
 console.log(hardWordsDictionary.allWords) // выводит объект в котором есть слова дилетант и квант
+*/
+
+//7 ЗАДАНИЕ
+/*
+class Developer {
+	constructor( fullName, age, position ) {
+		this.fullName = fullName;
+		this.age = age;
+		this.position = position;
+		this.technologies = [];
+	}
+
+	code() {}
+
+	learnNewTechnology(technology) {
+		this.technologies = [...technology]
+	}
+}
+
+class JuniorDeveloper extends Developer {
+	constructor(fullName, age, position = 'Junior') {
+		super(fullName, age, position)
+	}
+
+	code() {
+		console.log(`${this.position} разработчик пишет код...`)
+	}
+}
+
+class MiddleDeveloper extends Developer {
+	constructor(fullName, age, position = 'Middle') {
+		super(fullName, age, position)
+	}
+
+	code() {
+		console.log(`${this.position} разработчик пишет код...`)
+	}
+}
+
+class SeniorDeveloper extends Developer {
+	constructor(fullName, age, position = 'Senior') {
+		super(fullName, age, position)
+	}
+
+	code() {
+		console.log(`${this.position} разработчик пишет код...`)
+	}
+}
+
+const juniorDeveloper = new JuniorDeveloper('Анастасия', 20)
+const middleDeveloper = new MiddleDeveloper('Игорь', 25)
+const seniorDeveloper = new SeniorDeveloper('Максим', 30)
+
+juniorDeveloper.code(); // Junior разработчик пишет код...
+middleDeveloper.code(); // Middle разработчик пишет код...
+seniorDeveloper.code(); // Senior разработчик пишет код...
+console.log(juniorDeveloper.fullName, juniorDeveloper.age, juniorDeveloper.position); // 'Анастасия', 20, 'Junior'
+console.log(middleDeveloper.fullName, middleDeveloper.age, middleDeveloper.position); // 'Игорь', 25, 'Middle'
+console.log(seniorDeveloper.fullName, seniorDeveloper.age, seniorDeveloper.position); // 'Максим', 30, 'Senior'
+//juniorDeveloper.learnNewTechnology(['HTML', 'CSS', 'JavaScript'])
+////middleDeveloper.learnNewTechnology(['HTML', 'CSS', 'JavaScript', 'React'])
+//seniorDeveloper.learnNewTechnology(['HTML', 'CSS', 'JavaScript', 'React', 'NodeJS'])
+*/
+
 
 

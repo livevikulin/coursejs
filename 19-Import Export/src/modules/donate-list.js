@@ -32,7 +32,9 @@ export default class DonateList {
 		donatesWrapper.className = 'donates-container__donates'
 
 		const donateItem = this.createDonateItem()
-		donatesWrapper.append(donateItem)
+		donateItem.forEach(item => {
+			donatesWrapper.append(item)
+		})
 
 		return donatesWrapper
 	}

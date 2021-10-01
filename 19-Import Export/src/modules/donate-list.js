@@ -31,22 +31,22 @@ export default class DonateList {
 		const donatesWrapper = document.createElement('div')
 		donatesWrapper.className = 'donates-container__donates'
 
-		const donateItem = this.createDonateItem()
-		donateItem.forEach(item => {
-			donatesWrapper.append(item)
+		const donateItems = this.createDonateItems()
+		donateItems.forEach(donateItem => {
+			donatesWrapper.append(donateItem)
 		})
 
 		return donatesWrapper
 	}
 
-	createDonateItem() {
+	createDonateItems() {
 
 		const donates = this.donates.map(donate => {
 			const donateItem = document.createElement('div')
 			donateItem.className = 'donate-item'
 
 			const {amount, date} = donate
-			donateItem.append(amount, date)
+			donateItem.innerHTML = `${date} - <b>${amount}$</b>`
 			
 			return donateItem
 		})

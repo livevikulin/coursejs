@@ -6,7 +6,7 @@ export default class App {
         this.body = document.querySelector('body')
 		this.state = {
 			donates: [],
-			totalAmount: null,
+			totalAmount: 0,
 		}
     }
     run() {
@@ -17,7 +17,8 @@ export default class App {
 			{ amount: 1, date: new Date() },
 		]
 		
-        const form = new DonateForm()
+		const updateAmount = this.state.totalAmount
+        const form = new DonateForm(updateAmount)
 		const container = new DonateList(mockDonates)
 
         const formRender = form.render()

@@ -1,6 +1,7 @@
 export default class DonateList {
 	constructor(donates) {
 		this.donates = donates
+		this.donates
 	}
 
 	render() {
@@ -52,5 +53,9 @@ export default class DonateList {
 		})
 
 		return donates
+	}
+
+	updateDonates(updatedDonates) {
+		
 	}
 }

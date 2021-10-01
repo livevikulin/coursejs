@@ -1,6 +1,7 @@
 export default class DonateForm {
-    constructor() {
+    constructor(total) {
         this.form
+		this.totalAmount = total
     }
     render() {
         this.form = this.createform()
@@ -10,7 +11,7 @@ export default class DonateForm {
         const form = document.createElement('form')
         form.className = 'donate-form'
 
-        const title = this.createTitle('28$')
+        const title = this.updateTotalAmount(this.totalAmount)
         const input = this.createInput({
             name: "amount",
             type: "number",
@@ -20,20 +21,27 @@ export default class DonateForm {
         })
         const label = this.createLabel('Введите сумму в $', input)
         const button = this.createButton('Задонатить', 'submit')
+
         form.append(title, label, button)
 
         return form
     }
+
+	updateTotalAmount(newAmount) {
+		return this.createTitle(newAmount)
+	}
+
     createTitle(textTitle) {
         const title = document.createElement('h1')
+		
         title.id = 'total-amount'
-        title.innerHTML = textTitle
+        title.innerHTML = `${textTitle}$`
 
         return title
-        
     }
     createLabel(textLabel, input) {
         const label = document.createElement('label')
+
         label.className = 'donate-form__input-label'
         label.append(textLabel, input)
 
@@ -54,6 +62,7 @@ export default class DonateForm {
     }
     createButton(textButton, type) {
         const button = document.createElement('button')
+
         button.className = 'donate-form__submit-button'
         button.type = type
         button.innerHTML = textButton

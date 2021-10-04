@@ -1,29 +1,39 @@
 import DonateForm from "./donate-form"
 import DonateList from "./donate-list"
+import { calculateSumOfNumbers as sumNumbers } from "../core/utils/index.js"
+
+const mockDonates = [
+	{ amount: 4, date: new Date() },
+	{ amount: 20, date: new Date() },
+	{ amount: 3, date: new Date() },
+	{ amount: 1, date: new Date() },
+]
 
 export default class App {
-    constructor() {
-        this.body = document.querySelector('body')
+	#donateForm 
+	#donateList
+
+	constructor() {
+		this.body = document.querySelector('body')
 		this.state = {
-			donates: [],
-			totalAmount: 0,
+			donates: mockDonates,
+			totalAmount: sumNumbers(mockDonates),
 		}
-    }
-    run() {
-		const mockDonates = [
-			{ amount: 4, date: new Date() },
-			{ amount: 20, date: new Date() },
-			{ amount: 3, date: new Date() },
-			{ amount: 1, date: new Date() },
-		]
-		
-		const updateAmount = this.state.totalAmount
-        const form = new DonateForm(updateAmount)
-		const container = new DonateList(mockDonates)
+		this.#donateForm = new DonateForm(this.state.totalAmount, this.createNewDonate.bind(this))
+		this.#donateList = new DonateList(this.state.donates)
+	}
 
-        const formRender = form.render()
-		const containerRender = container.render()
+	createNewDonate(newDonate) {
+		this.state.donates.push(newDonate)
+		this.state.totalAmount = this.state.totalAmount + newDonate.amount
+		this.#donateList.updateDonates(this.state.donates)
+		this.#donateForm.updateTotalAmount(this.state.totalAmount)
+	}
 
-        this.body.append(formRender, containerRender)
-    }
+	run() {
+		const formRender = this.#donateForm.render()
+		const containerRender = this.#donateList.render()
+
+		this.body.append(formRender, containerRender)
+	}
 }

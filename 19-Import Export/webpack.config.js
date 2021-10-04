@@ -22,11 +22,11 @@ module.exports = ({ development }) => ({
     ],
     module: {
         rules: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: ['babel-loader'],
-            },
+            // {
+            //     test: /\.js$/,
+            //     exclude: /node_modules/,
+            //     use: ['babel-loader'],
+            // },
             {
                 test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
                 type: 'asset/resource',

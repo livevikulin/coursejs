@@ -22,20 +22,22 @@ function App() {
     const handleReset = () => setCounters(initialState);
 
     const handleIncrement = (counterId) => {
-        const onIncrementValue = counters.filter((counter) =>
-            counter.id == counterId ? counter.value++ : counter.value
-        );
+        const onIncrementValue = counters.map((counter) => {
+            if (counter.id == counterId) counter.value++;
+            return counter;
+        });
         setCounters(onIncrementValue);
     };
 
     const handleDecrement = (counterId) => {
-        const onDecrementValue = counters.filter((counter) =>
-            counter.id == counterId
-                ? counter.value > 1
-                    ? counter.value--
-                    : counter.value
-                : counter.value
-        );
+        const onDecrementValue = counters.filter((counter) => {
+            if (counter.id == counterId) {
+                counter.value > 0 ? counter.value-- : counter.value;
+            } else {
+                counter.value;
+            }
+            return counter;
+        });
         setCounters(onDecrementValue);
     };
 
